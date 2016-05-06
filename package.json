@@ -3,7 +3,11 @@
   "version": "0.0.1",
   "description": "nodejs playground",
   "scripts": {
-    "start": "node ./bin/www \"gulp\" "
+    "start": "concurrent \"node ./bin/www\" \"gulp\" ",
+    "postinstall": "typings install",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "typings": "typings install"
   },
   "keywords": [
     "Angular2",
@@ -14,24 +18,29 @@
   "dependencies": {
     "angular2": "2.0.0-beta.17",
     "body-parser": "^1.15.0",
+    "concurrently": "^2.0.0",
     "cookie-parser": "^1.4.1",
+    "debug": "~2.2.0",
+    "es6-shim": "^0.35.0",
     "express": "^4.13.4",
-    "jade": "~1.9.2",
-    "mongodb": "^1.4.4",
-    "monk": "^1.0.1",
-    "multer": "^1.1.0",
-    "systemjs": "0.19.26",
     "gulp": "^3.9.1",
     "gulp-jade": "^1.1.0",
     "gulp-util": "^3.0.7",
     "http-server": "^0.9.0",
-    "debug": "~2.2.0",
-    "serve-favicon": "~2.2.1",
+    "jade": "~1.9.2",
+    "mongodb": "^1.4.4",
+    "monk": "^1.0.1",
     "morgan": "~1.5.3",
-    "es6-shim": "^0.35.0",
+    "multer": "^1.1.0",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.6",
+    "serve-favicon": "~2.2.1",
+    "systemjs": "0.19.26",
     "zone.js": "^0.6.12"
+  },
+  "devDependencies": {
+    "typescript": "^1.8.10",
+    "typings": "^0.7.12"
   },
   "repository": {
     "type": "git",
