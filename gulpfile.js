@@ -6,9 +6,9 @@ var gulp  = require('gulp'),
 gulp.task('default', ['watch']);
 
 gulp.task('build-html', function(done) {
-    return gulp.src('views/templates/**/*.jade')
+    return gulp.src('public/javascripts/client/templates/**/*.jade')
         .pipe(jade())
-        .pipe(gulp.dest('views/client'));
+        .pipe(gulp.dest('public/javascripts/client'));
 });
 
 gulp.task('watch', function() {

@@ -3,7 +3,11 @@
   "version": "0.0.1",
   "description": "nodejs playground",
   "scripts": {
-    "start": "node ./bin/www \"gulp\" "
+    "start": "node ./bin/www \"gulp\" ",
+    "postinstall": "typings install",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "typings": "typings install"
   },
   "keywords": [
     "Angular2",
@@ -32,6 +36,10 @@
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.6",
     "zone.js": "^0.6.12"
+  },
+  "devDependencies": {
+    "typescript": "^1.8.10",
+    "typings": "^0.7.12"
   },
   "repository": {
     "type": "git",

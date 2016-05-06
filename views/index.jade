@@ -15,15 +15,15 @@ html
     script(src='angular2/bundles/router.dev.js')
     // 2. Configure SystemJS
     script.
+      System.defaultJSExtensions = true;
       System.config({
       packages: {
       app: {
-      format: 'register',
-      defaultExtension: 'js'
+      format: 'register'
       }
       }
       });
-      System.import('javascripts/client/main')
+      System.import('javascripts/client/main.js')
       .then(null, console.error.bind(console));
   // 3. Display the application
   body
