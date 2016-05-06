@@ -12,5 +12,5 @@ gulp.task('build-html', function(done) {
 });
 
 gulp.task('watch', function() {
-    gulp.watch('views/templates/**/*.jade', ['build-html']);
+    gulp.watch('public/javascripts/client/templates/**/*.jade', ['build-html']);
 });
