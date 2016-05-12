@@ -5,11 +5,32 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   var db = req.db;
   var heroes = db.collection('heroes');
- /* heroes.insert({name:'yolo'}, function(err, result) {
-
+  var heroesCurosr = heroes.find();
+  heroesCurosr.toArray(function(err, docs) {
+    if (docs) {
+      res.send(docs);
+    }
+  });
+  /*heroesCurosr.each(function(err, docs) {
+    if (docs) {
+      //used for ciruclar reference
+     /* var cache = [];
+      JSON.stringify(docs, function(key, value) {
+          if (typeof value === 'object' && value !== null) {
+              if (cache.indexOf(value) !== -1) {
+                  // Circular reference found, discard key
+                  return;
+              }
+              // Store value in our collection
+              cache.push(value);
+          }
+          return value;
+      });
+      cache = null; // Enable garbage collection
+      */
+      /*res.send(docs);
+    }
   });*/
-  //console.log(heroes);
-  //res.send(heroes);
 });
 
 module.exports = router;
