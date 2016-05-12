@@ -5,9 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var mongo = require('mongodb');
-var monk = require('monk');
-var db = monk('localhost:27017/heroesApp');
+//var mongo = require('mongodb');
+//var monk = require('monk');
+//var db = monk('localhost:27017/heroesApp');
+var mongo = require('mongodb').MongoClient;
+var URL = 'mongodb://localhost:27017/heroesApp';
+
+var database;
 
 var routes = require('./routes/index');
 var heroes = require('./routes/heroes');
@@ -27,11 +31,23 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, '/node_modules')));
 
+
 // Make our db accessible to our router
-app.use(function(req,res,next){
+app.use(function(req,es,next) {
+  mongo.connect(URL, function(err, db) {
+    if (err) {
+      console.log('Error connecting to database');
+      return;
+    } else {
+      req.db = database = db;
+      next();
+    }
+  });
+});
+/*app.use(function(req,res,next){
   req.db = db;
   next();
-});
+});*/
 
 app.use('/', routes);
 app.use('/api/heroes', heroes);
